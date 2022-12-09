@@ -9,6 +9,7 @@
   "author": "Grégoire Dolidon (nodilod)",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^4.7.1",
     "axios": "^1.2.1",
     "cheerio": "^1.0.0-rc.12",
     "got": "^12.5.3",
@@ -16,5 +17,8 @@
     "https": "^1.0.0",
     "mysql": "^2.18.1",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "prisma": "^4.7.1"
   }
 }

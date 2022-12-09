@@ -17,7 +17,7 @@ export class Marinette {
         console.log('Scraping ' + this.website + '...');
 
         return new Promise(async function (resolve, reject) {
-            const films = {};
+            const films = [];
             const marinette = new Marinette();
 
             for (const value of Object.entries(marinette.params)) {
@@ -46,14 +46,16 @@ export class Marinette {
                             const $film = $(product);
                             const film = {}
                             film.name = $film.find('.product-title').text().trim();
-                            console.log(film)
+                            film.link = $film.find('.product-title').attr('href');
+                            film.price = $film.find('.price').text().trim();
+                            film.isInStock = !!$film.find('#add_to_cart').prop('disabled');
+                            films.push(film);
                         });
                     }
-
                     page++;
                 }
             }
-            resolve('Film scrapped');
+            resolve(films);
         });
     }
 }
