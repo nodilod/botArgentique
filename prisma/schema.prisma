@@ -23,8 +23,8 @@ model Film {
   url       String?  @unique
   shopId    Int
   shop      Shop     @relation(fields: [shopId], references: [id])
-  price     Int?
-  inStock   Boolean
+  price     String?
+  isInStock   Boolean
   history   FilmHistoryRecord[]
 }
 
@@ -32,7 +32,7 @@ model FilmHistoryRecord {
   id        Int      @id @default(autoincrement())
   filmId    Int
   film      Film     @relation(fields: [filmId], references: [id])
-  price     Int?
+  price     String?
   inStock   Boolean
   createdAt DateTime @default(now())
 }
