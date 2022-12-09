@@ -13,7 +13,7 @@ export class Marinette {
         "blackAndWhite": "?q=Type+de+Pellicule-Noir+%26+Blanc"
     }
 
-    async scrapFilm() {
+    async scrapFilms() {
         console.log('Scraping ' + this.website + '...');
 
         return new Promise(async function (resolve, reject) {

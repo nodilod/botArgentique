@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE `Film` ADD COLUMN `format` VARCHAR(191) NULL,
+    ADD COLUMN `iso` INTEGER NULL,
+    ADD COLUMN `length` INTEGER NULL;

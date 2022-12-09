@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f986846-7670-43c8-8031-b67632e84fd0" name="Changes" comment="get films of marinettes + database connection and schema">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="8f986846-7670-43c8-8031-b67632e84fd0" name="Changes" comment="detection of price or stock change and create record in bd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/main.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/websites/marinette.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/websites/marinette.mjs" afterDir="false" />
@@ -75,7 +75,7 @@
       <option name="presentableId" value="Default" />
       <updated>1670616382140</updated>
       <workItem from="1670616383222" duration="4131000" />
-      <workItem from="1670620528745" duration="2903000" />
+      <workItem from="1670620528745" duration="5609000" />
     </task>
     <task id="LOCAL-00001" summary="init project + get some data in marinette site">
       <created>1670616506519</created>
@@ -91,7 +91,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670620561129</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="save films from marinette in database">
+      <created>1670623537675</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1670623537675</updated>
+    </task>
+    <task id="LOCAL-00004" summary="detection of price or stock change and create record in bd">
+      <created>1670626137693</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1670626137693</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,6 +114,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init project + get some data in marinette site" />
     <MESSAGE value="get films of marinettes + database connection and schema" />
-    <option name="LAST_COMMIT_MESSAGE" value="get films of marinettes + database connection and schema" />
+    <MESSAGE value="save films from marinette in database" />
+    <MESSAGE value="detection of price or stock change and create record in bd" />
+    <option name="LAST_COMMIT_MESSAGE" value="detection of price or stock change and create record in bd" />
   </component>
 </project>
