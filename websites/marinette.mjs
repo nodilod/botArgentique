@@ -1,7 +1,5 @@
-import axios from "axios";
 import got from "got";
 import * as cheerio from "cheerio";
-import {PrismaClient} from "@prisma/client";
 
 export class Marinette {
     website = 'https://www.ateliers-marinette.fr/';

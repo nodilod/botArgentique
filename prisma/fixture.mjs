@@ -40,3 +40,20 @@ config.filmTypes.forEach(filmType => {
     });
 });
 
+config.filmFormats.forEach(filmFormat => {
+    prisma.filmFormat.findFirst({
+        where: {
+            name: filmFormat
+        }
+    }).then(async (result) => {
+        if (!result) {
+            prisma.filmFormat.create({
+                data: {
+                    name: filmFormat
+                }
+            }).then((result) => {
+                console.log("filmFormat created : " + filmFormat);
+            });
+        }
+    });
+});

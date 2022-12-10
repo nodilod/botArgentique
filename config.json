@@ -4,10 +4,22 @@
     "colorSlide",
     "blackAndWhite"
   ],
+  "filmFormats": [
+    "135",
+    "120",
+    "large",
+    "127",
+    "minox",
+    "110"
+  ],
   "shops": [
     {
       "name": "Les ateliers de Marinette",
       "url": "https://www.ateliers-marinette.fr/"
+    },
+    {
+      "name": "Fotoimpex",
+      "url": "https://www.fotoimpex.com/"
     }
   ],
   "bugFilm": [

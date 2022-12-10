@@ -2,8 +2,12 @@ import {Marinette} from "./websites/marinette.mjs";
 import {PrismaClient} from '@prisma/client';
 import {TwitterApi} from "twitter-api-v2";
 import config from './config.json' assert { type: 'json' };
+import {Fotoimpex} from "./websites/fotoimpex.mjs";
 
-const websites = [new Marinette(),];
+const websites = [
+    new Marinette(),
+    new Fotoimpex(),
+];
 
 const prisma = new PrismaClient();
 
@@ -29,23 +33,23 @@ websites.forEach(website => {
                         }
                     }).then(async (result) => {
                         if (!result) {
-                            prisma.filmType.findFirst({
-                                where: {
-                                    name: film.type
+                            const filmType = film.type ? prisma.filmType.findFirst({where: {name: film.type}}).id : null;
+                            prisma.film.create({
+                                data: {
+                                    name: film.name,
+                                    url: film.url,
+                                    price: film.price,
+                                    isInStock: film.isInStock,
+                                    shopId: shop.id,
+                                    filmTypeId: filmType ?? null,
                                 }
-                            }).then(async (filmType) => {
-                                prisma.film.create({
-                                    data: {
-                                        name: film.name,
-                                        url: film.url,
-                                        price: film.price,
-                                        isInStock: film.isInStock,
-                                        shopId: shop.id,
-                                        filmTypeId: filmType.id
-                                    }
-                                }).then((result) => {
-                                    console.log("film created : " + film.name);
-                                });
+                            }).then((result) => {
+                                console.log("film created : " + film.name);
+                                // client.v1.tweet(
+                                //     `Le film ${film.name} est disponible sur ${shop.name} ! ${film.url}`
+                                //     ).then((result) => {
+                                //     console.log("tweet sent");
+                                // });
                             });
                         } else if (result.price !== film.price || result.isInStock !== film.isInStock) {
                             console.log("film updated : " + film.name);
@@ -68,7 +72,7 @@ websites.forEach(website => {
 
                         }
                         //if film is back in stock, send a tweet
-                        if (result.isInStock !== film.isInStock && film.isInStock) {
+                        if (result && result.isInStock !== film.isInStock && film.isInStock) {
                             client.v1.tweet(
                                 `/!\\ ceci est un test !!!!! ce n'est pas réel(déso). Le film ${film.name} est de nouveau disponible sur ${website.website} ! ${film.url}`
                             ).then((result) => {

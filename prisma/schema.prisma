@@ -29,7 +29,8 @@ model Film {
   isInStock   Boolean
   history   FilmHistoryRecord[]
   length    Int?
-  format    String?
+  filmFormatId    Int?
+  filmFormat     FilmFormat?     @relation(fields: [filmFormatId], references: [id])
   iso       Int?
 }
 
@@ -43,6 +44,12 @@ model FilmHistoryRecord {
 }
 
 model FilmType {
+  id        Int      @id @default(autoincrement())
+  name      String @unique
+  films     Film[]
+}
+
+model FilmFormat {
   id        Int      @id @default(autoincrement())
   name      String @unique
   films     Film[]
