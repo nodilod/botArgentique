@@ -56,7 +56,7 @@ websites.forEach(website => {
                             console.log("film updated : " + film.name);
                             prisma.FilmHistoryRecord.create({
                                 data: {
-                                    price: film.price, isInStock: film.isInStock, filmId: film.id
+                                    price: film.price, isInStock: film.isInStock, filmId: result.id
                                 }
                             }).then((result) => {
                                 console.log("film history record created : " + film.name);
