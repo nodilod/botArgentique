@@ -3,5 +3,14 @@
     "colorNegative",
     "colorSlide",
     "blackAndWhite"
+  ],
+  "shops": [
+    {
+      "name": "Les ateliers de Marinette",
+      "url": "https://www.ateliers-marinette.fr/"
+    }
+  ],
+  "bugFilm": [
+    "https://www.ateliers-marinette.fr/fr/pellicules-argentiques/perimee-kodak-elite-chrome-200-35mm.html"
   ]
 }

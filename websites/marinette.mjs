@@ -1,6 +1,7 @@
 import axios from "axios";
 import got from "got";
 import * as cheerio from "cheerio";
+import {PrismaClient} from "@prisma/client";
 
 export class Marinette {
     website = 'https://www.ateliers-marinette.fr/';
@@ -21,14 +22,14 @@ export class Marinette {
             const marinette = new Marinette();
 
             for (const value of Object.entries(marinette.params)) {
-                const type = value[0];
+                const typeName = value[0];
                 const param = value[1];
                 const url = marinette.website + marinette.path + param;
                 let page = 1;
                 let isError = false;
 
                 while (!isError) {
-                    console.log("recuperation de la page " + page + " pour le type " + type);
+                    console.log("recuperation de la page " + page + " pour le type " + typeName);
 
                     const response = await got(url + '&page=' + page);
                     if (response.statusCode !== 200) {
@@ -49,6 +50,7 @@ export class Marinette {
                             film.url = $film.find('.product-title').attr('href');
                             film.price = $film.find('.price').text().trim();
                             film.isInStock = !!$film.find('#add_to_cart').prop('disabled');
+                            film.type = typeName;
                             films.push(film);
                         });
                     }
