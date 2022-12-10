@@ -14,12 +14,6 @@ const client = new TwitterApi({
     accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
-// client.v1.tweet('Hello World!').then((val) => {
-//     console.log("tweeted");
-// }).catch((err) => {
-//     console.log(err)
-// })
-
 websites.forEach(website => {
     const shop = prisma.shop.findFirst({
         where: {
@@ -55,11 +49,6 @@ websites.forEach(website => {
                             });
                         } else if (result.price !== film.price || result.isInStock !== film.isInStock) {
                             console.log("film updated : " + film.name);
-                            console.log("old price : " + result.price);
-                            console.log("new price : " + film.price);
-                            console.log("old isInStock : " + result.isInStock);
-                            console.log("new isInStock : " + film.isInStock);
-
                             prisma.film.update({
                                 where: {
                                     id: result.id
@@ -76,10 +65,15 @@ websites.forEach(website => {
                                     console.log("film history record created : " + film.name);
                                 });
                             });
-                            if (film.isInStock) {
-                                // send tweet
-                                // get key in the .env file
-                            }
+
+                        }
+                        //if film is back in stock, send a tweet
+                        if (result.isInStock !== film.isInStock && film.isInStock) {
+                            client.v1.tweet(
+                                `/!\\ ceci est un test !!!!! ce n'est pas réel(déso). Le film ${film.name} est de nouveau disponible sur ${website.website} ! ${film.url}`
+                            ).then((result) => {
+                                console.log("tweet sent");
+                            });
                         }
                     });
                 }
