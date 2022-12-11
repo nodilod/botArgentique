@@ -46,7 +46,7 @@ export class Marinette {
                             const film = {}
                             film.name = $film.find('.product-title').text().trim();
                             film.url = $film.find('.product-title').attr('href');
-                            film.price = $film.find('.price').text().trim();
+                            film.price = $film.find('.price').text().trim().replace(/[^0-9,]/g, '');
                             film.isInStock = !!$film.find('#add_to_cart').prop('disabled');
                             film.type = typeName;
                             films.push(film);
@@ -59,4 +59,3 @@ export class Marinette {
         });
     }
 }
-

@@ -1,8 +1,8 @@
 import {Marinette} from "./websites/marinette.mjs";
-import {PrismaClient} from '@prisma/client';
-import {TwitterApi} from "twitter-api-v2";
 import config from './config.json' assert {type: 'json'};
 import {Fotoimpex} from "./websites/fotoimpex.mjs";
+import Twitter from "twit";
+import {PrismaClient} from "@prisma/client";
 
 const websites = [
     new Marinette(),
@@ -11,12 +11,14 @@ const websites = [
 
 const prisma = new PrismaClient();
 
-const client = new TwitterApi({
-    appKey: process.env.TWITTER_API_KEY,
-    appSecret: process.env.TWITTER_API_SECRET_KEY,
-    accessToken: process.env.TWITTER_ACCESS_TOKEN,
-    accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+const client = new Twitter({
+    consumer_key: process.env.TWITTER_API_KEY,
+    consumer_secret: process.env.TWITTER_API_SECRET_KEY,
+    access_token: process.env.TWITTER_ACCESS_TOKEN,
+    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
+
+reportBug("test");
 
 for (const website of websites) {
     const shop = await prisma.shop.findFirst({
@@ -62,18 +64,18 @@ for (const website of websites) {
                         console.log('impossible de créer la pellicule: ' + film.name);
                     }
                     try {
-                        //await client.v1.tweet(
-                        //     `Le film ${film.name} est disponible sur ${shop.name} ! ${film.url}`
-                        //     ).then((result) => {
-                        //     console.log("tweet envoyé: " + film.name);
-                        // });
+                    //     await client.post('/statuses/update', {
+                    //         status: `Le film ${film.name} est disponible sur ${shop.name} ! ${film.url}`
+                    //     });
+                    //     console.log("tweet envoyé: " + film.name);
+
                     } catch (e) {
                         console.log('erreur lors de l\'envoi du tweet');
                     }
                 } else if (result.price !== film.price || result.isInStock !== film.isInStock) {
                     // if film is in database but price or stock is different
                     console.log("film updated: " + film.name);
-                    try{
+                    try {
                         await prisma.film.update({
                             where: {
                                 id: result.id
@@ -101,11 +103,10 @@ for (const website of websites) {
                 if (result && result.isInStock !== film.isInStock && film.isInStock) {
                     //if film is back in stock, send a tweet
                     try {
-                        //await client.v1.tweet(
-                        //     `Le film ${film.name} est de nouveau disponible sur ${website.website} ! ${film.url}`
-                        // ).then((result) => {
-                        //     console.log("tweet sent");
-                        // });
+                        //     await client.post('/statuses/update', {
+                        //         status: `Le film ${film.name} est de nouveau disponible sur ${website.website} ! ${film.url}`
+                        //     });
+                        //     console.log("tweet envoyé: " + film.name);
                     } catch (e) {
                         console.log('impossible de twitter le retour du film: ' + film.name);
                     }
@@ -114,4 +115,3 @@ for (const website of websites) {
         }
     });
 }
-
