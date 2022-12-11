@@ -53,7 +53,7 @@ export class Fotoimpex {
                             const film = {}
                             film.name = $film.find('.os_list_link1').text().trim();
                             film.url = fotoimpex.websiteForFilmUrl + $film.find('.os_list_link1').attr('href');
-                            film.price = $film.find('.os_list_price2').children().eq(1).text().trim();
+                            film.price = $film.find('.os_list_price2').children().eq(1).text().trim().replace(/[^0-9,]/g, '');
                             film.isInStock = !!$film.find('.os_list_button').find('input').length;
                             film.type = null;
                             film.format = format;
@@ -64,6 +64,5 @@ export class Fotoimpex {
             }
             resolve(films);
         });
-
     }
 }

@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f986846-7670-43c8-8031-b67632e84fd0" name="Changes" comment="implement fotoimplex">
+    <list default="true" id="8f986846-7670-43c8-8031-b67632e84fd0" name="Changes" comment="fix film type and film format">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/main.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/websites/fotoimpex.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/websites/fotoimpex.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +79,8 @@
       <workItem from="1670665474204" duration="314000" />
       <workItem from="1670665982251" duration="366000" />
       <workItem from="1670681615159" duration="21542000" />
-      <workItem from="1670759086063" duration="2944000" />
+      <workItem from="1670759086063" duration="3307000" />
+      <workItem from="1670775958829" duration="4377000" />
     </task>
     <task id="LOCAL-00001" summary="init project + get some data in marinette site">
       <created>1670616506519</created>
@@ -164,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670711168332</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fix film type and film format">
+      <created>1670764958851</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1670764958851</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +202,7 @@
     <MESSAGE value="twitter work !" />
     <MESSAGE value="fix read me" />
     <MESSAGE value="implement fotoimplex" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement fotoimplex" />
+    <MESSAGE value="fix film type and film format" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix film type and film format" />
   </component>
 </project>
