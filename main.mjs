@@ -33,24 +33,36 @@ websites.forEach(website => {
                         }
                     }).then(async (result) => {
                         if (!result) {
-                            const filmType = film.type ? prisma.filmType.findFirst({where: {name: film.type}}).id : null;
-                            prisma.film.create({
-                                data: {
-                                    name: film.name,
-                                    url: film.url,
-                                    price: film.price,
-                                    isInStock: film.isInStock,
-                                    shopId: shop.id,
-                                    filmTypeId: filmType ?? null,
-                                }
-                            }).then((result) => {
-                                console.log("film created : " + film.name);
-                                // client.v1.tweet(
-                                //     `Le film ${film.name} est disponible sur ${shop.name} ! ${film.url}`
-                                //     ).then((result) => {
-                                //     console.log("tweet sent");
-                                // });
-                            });
+                            const filmType = film.type ? await prisma.filmType.findFirst({where: {name: film.type}}) : {id : null};
+                            const filmFormat = film.format ? await prisma.filmFormat.findFirst({where: {name: film.format}}) : {id : null};
+                            console.log(filmType, film.type);
+                            console.log(filmFormat, film.format);
+                            try {
+                                prisma.film.create({
+                                    data: {
+                                        name: film.name,
+                                        url: film.url,
+                                        price: film.price,
+                                        isInStock: film.isInStock,
+                                        shopId: shop.id,
+                                        filmTypeId: filmType.id,
+                                        filmFormatId: filmFormat.id ,
+                                    }
+                                }).then((result) => {
+                                    console.log("film created : " + film.name);
+                                    try {
+                                        // client.v1.tweet(
+                                        //     `Le film ${film.name} est disponible sur ${shop.name} ! ${film.url}`
+                                        //     ).then((result) => {
+                                        //     console.log("tweet sent");
+                                        // });
+                                    } catch (e) {
+                                        console.log( 'impossible de twitter la nouveautée du film: ' + film.name + ' : ' + e);
+                                    }
+                                });
+                            } catch (e) {
+                                console.log('impossible to create film : ' + film.name);
+                            }
                         } else if (result.price !== film.price || result.isInStock !== film.isInStock) {
                             console.log("film updated : " + film.name);
                             prisma.film.update({
@@ -73,11 +85,15 @@ websites.forEach(website => {
                         }
                         //if film is back in stock, send a tweet
                         if (result && result.isInStock !== film.isInStock && film.isInStock) {
-                            client.v1.tweet(
-                                `/!\\ ceci est un test !!!!! ce n'est pas réel(déso). Le film ${film.name} est de nouveau disponible sur ${website.website} ! ${film.url}`
-                            ).then((result) => {
-                                console.log("tweet sent");
-                            });
+                            try {
+                                // client.v1.tweet(
+                                //     `Le film ${film.name} est de nouveau disponible sur ${website.website} ! ${film.url}`
+                                // ).then((result) => {
+                                //     console.log("tweet sent");
+                                // });
+                            } catch (e) {
+                                console.log('impossible de twitter le retour du film: ' + film.name + ' : ' + e);
+                            }
                         }
                     });
                 }

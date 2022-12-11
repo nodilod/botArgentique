@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f986846-7670-43c8-8031-b67632e84fd0" name="Changes" comment="fix read me">
+    <list default="true" id="8f986846-7670-43c8-8031-b67632e84fd0" name="Changes" comment="implement fotoimplex">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/main.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/fixture.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/fixture.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websites/digit-photo.com.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/websites/fotoimpex.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/websites/marinette.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/websites/marinette.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +77,8 @@
       <workItem from="1670620528745" duration="11132000" />
       <workItem from="1670665474204" duration="314000" />
       <workItem from="1670665982251" duration="366000" />
-      <workItem from="1670681615159" duration="19143000" />
+      <workItem from="1670681615159" duration="21542000" />
+      <workItem from="1670759086063" duration="2944000" />
     </task>
     <task id="LOCAL-00001" summary="init project + get some data in marinette site">
       <created>1670616506519</created>
@@ -160,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670702393049</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="implement fotoimplex">
+      <created>1670711168332</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1670711168332</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,6 +192,7 @@
     <MESSAGE value="add of film type" />
     <MESSAGE value="twitter work !" />
     <MESSAGE value="fix read me" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix read me" />
+    <MESSAGE value="implement fotoimplex" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement fotoimplex" />
   </component>
 </project>
