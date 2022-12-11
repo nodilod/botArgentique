@@ -18,8 +18,6 @@ const client = new Twitter({
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
-reportBug("test");
-
 for (const website of websites) {
     const shop = await prisma.shop.findFirst({
         where: {

@@ -15,6 +15,7 @@ export class Fotoimpex {
         "127": "Medium%20format%20films%20127",
         "minox": "Minox%20films%208x11",
         "110": "Pocket%20films%20110",
+        "instant": "Instant%20films",
     };
 
     async scrapFilms() {
@@ -27,13 +28,13 @@ export class Fotoimpex {
             for (const value of Object.entries(fotoimpex.formatsParameter)) {
                 const format = value[0];
                 const param = value[1];
-                const url = fotoimpex.website + fotoimpex.path + param;
+                const url = fotoimpex.website + fotoimpex.path + '&rub2=' + param;
 
                 let page = 0;
                 let isError = false;
 
                 while (!isError) {
-                    console.log("recuperation de la page " + page/60 + " pour le format " + format);
+                    //console.log("recuperation de la page " + page/60 + " pour le format " + format);
 
                     const response = await got(url + '&pn=' + page);
                     if (response.statusCode !== 200) {

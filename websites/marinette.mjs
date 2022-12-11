@@ -27,7 +27,7 @@ export class Marinette {
                 let isError = false;
 
                 while (!isError) {
-                    console.log("recuperation de la page " + page + " pour le type " + typeName);
+                    //console.log("recuperation de la page " + page + " pour le type " + typeName);
 
                     const response = await got(url + '&page=' + page);
                     if (response.statusCode !== 200) {
