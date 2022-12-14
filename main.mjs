@@ -62,10 +62,10 @@ for (const website of websites) {
                         console.log('impossible de créer la pellicule: ' + film.name);
                     }
                     try {
-                    //     await client.post('/statuses/update', {
-                    //         status: `Le film ${film.name} est disponible sur ${shop.name} ! ${film.url}`
-                    //     });
-                    //     console.log("tweet envoyé: " + film.name);
+                        await client.post('/statuses/update', {
+                            status: `Le film ${film.name} est disponible sur ${shop.name} ! Au prix de ${film.price}€  ${film.url}`
+                        });
+                        console.log("tweet envoyé: " + film.name);
 
                     } catch (e) {
                         console.log('erreur lors de l\'envoi du tweet');
@@ -101,10 +101,10 @@ for (const website of websites) {
                 if (result && result.isInStock !== film.isInStock && film.isInStock) {
                     //if film is back in stock, send a tweet
                     try {
-                        //     await client.post('/statuses/update', {
-                        //         status: `Le film ${film.name} est de nouveau disponible sur ${website.website} ! ${film.url}`
-                        //     });
-                        //     console.log("tweet envoyé: " + film.name);
+                        await client.post('/statuses/update', {
+                            status: `Le film ${film.name} est de nouveau disponible sur ${website.website} ! Au prix de ${film.price}€  ${film.url}`
+                        });
+                        console.log("tweet envoyé: " + film.name);
                     } catch (e) {
                         console.log('impossible de twitter le retour du film: ' + film.name);
                     }
