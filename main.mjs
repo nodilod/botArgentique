@@ -113,3 +113,9 @@ for (const website of websites) {
         }
     });
 }
+
+prisma.Execution.create({
+    data: {}
+}).then(() => {
+  console.log("execution créée");
+})

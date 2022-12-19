@@ -55,4 +55,9 @@ model FilmFormat {
   films     Film[]
 }
 
+model Execution {
+  id        Int      @id @default(autoincrement())
+  date      DateTime @default(now())
+}
+
 
