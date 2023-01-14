@@ -1,5 +1,6 @@
 import got from "got";
 import * as cheerio from "cheerio";
+
 export class Retrocamera {
     website = 'https://www.retrocamera.be/';
 
@@ -22,7 +23,7 @@ export class Retrocamera {
         return new Promise(async function (resolve, reject) {
             const films = [];
             const retrocamera = new Retrocamera();
-            let firstProductOfPage = null ;
+            let firstProductOfPage = null;
 
             for (const valueFormat of Object.entries(retrocamera.paramsFilmFormat)) {
                 const formatName = valueFormat[0];
@@ -36,13 +37,11 @@ export class Retrocamera {
                     let isError = false;
 
                     while (!isError) {
-                        console.log("recuperation de la page " + page + "pour le format" + formatName + " pour le type " + typeName);
+                        //console.log("recuperation de la page " + page + "pour le format" + formatName + " pour le type " + typeName);
                         const response = await got(url + '&page=' + page);
 
                         const $ = cheerio.load(response.body);
-
                         const products = $('.ajax_block_product');
-
                         if (products.length === 0) {
                             isError = true;
                         } else {
