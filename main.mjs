@@ -18,6 +18,7 @@ const client = new Twitter({
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
+// boucle principal fetch tout les sites en simultané
 for (const website of websites) {
     const shop = await prisma.shop.findFirst({
         where: {
@@ -26,6 +27,7 @@ for (const website of websites) {
     });
     website.scrapFilms().then(async (films) => {
         for (const film of films) {
+            // certaines pellicules sont bugger, pour eviter de tweet a chaque lancement on les ignores
             if (!config.bugFilm.includes(film.url)) {
                 const result = await prisma.film.findFirst({
                     where: {
@@ -33,10 +35,11 @@ for (const website of websites) {
                     }
                 })
                 if (!result) {
-                    // if film is not in database
+                    // si la pellicule n'est pas en bd : création et tweet
                     const filmType = film.type ? await prisma.filmType.findFirst({where: {name: film.type}}) : {id: null};
                     const filmFormat = film.format ? await prisma.filmFormat.findFirst({where: {name: film.format}}) : {id: null};
                     try {
+                        //création de la pellicule
                         const createdFilm = await prisma.film.create({
                             data: {
                                 name: film.name,
@@ -50,6 +53,7 @@ for (const website of websites) {
                         });
                         console.log("pellicule créée: " + film.name);
 
+                        // création de son historique
                         await prisma.FilmHistoryRecord.create({
                             data: {
                                 price: film.price,
@@ -61,18 +65,25 @@ for (const website of websites) {
                     } catch (e) {
                         console.log('impossible de créer la pellicule: ' + film.name);
                     }
-                    try {
-                        await client.post('/statuses/update', {
-                            status: `Le film ${film.name} est disponible sur ${shop.name} ! Au prix de ${film.price}€  ${film.url}`
-                        });
-                        console.log("tweet envoyé: " + film.name);
 
-                    } catch (e) {
-                        console.log('erreur lors de l\'envoi du tweet');
+                    // verification si le vendeur as deja des pellicules en bd : sécuritée si c'est la premiere execution du sript sur ce site pour eviter le span de tweet
+                    if (!prisma.film.findFirst({where: {shopId: shop.id}})) {
+                        // on tweet
+                        try {
+                            await client.post('/statuses/update', {
+                                status: `Le film ${film.name} est disponible sur ${shop.name} ! Au prix de ${film.price}€  ${film.url}`
+                            });
+                            console.log("tweet envoyé: " + film.name);
+
+                        } catch (e) {
+                            console.log('erreur lors de l\'envoi du tweet');
+                        }
                     }
+
                 } else if (result.price !== film.price || result.isInStock !== film.isInStock) {
-                    // if film is in database but price or stock is different
+                    // si la pellicule existe mais a changer de prix ou de statut de stock (en stock ou pas) : création d'une ligne à son historique
                     console.log("film updated: " + film.name);
+                    // modificationd es information de la pellicule
                     try {
                         await prisma.film.update({
                             where: {
@@ -86,6 +97,7 @@ for (const website of websites) {
                         console.log('impossible créé la pellicule: ' + film.name);
                     }
 
+                    // création d'une ligne d'historique
                     try {
                         await prisma.FilmHistoryRecord.create({
                             data: {
@@ -99,7 +111,7 @@ for (const website of websites) {
                     }
                 }
                 if (result && result.isInStock !== film.isInStock && film.isInStock) {
-                    //if film is back in stock, send a tweet
+                    // si la pellicule est de nouveau en stock : tweet
                     try {
                         await client.post('/statuses/update', {
                             status: `Le film ${film.name} est de nouveau disponible sur ${website.website} ! Au prix de ${film.price}€  ${film.url}`
@@ -113,3 +125,10 @@ for (const website of websites) {
         }
     });
 }
+
+// création d'une ligne d'historique c'execution pour garder un historique
+prisma.Execution.create({
+    data: {}
+}).then(() => {
+    console.log("execution créée");
+})
