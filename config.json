@@ -2,7 +2,8 @@
   "filmTypes": [
     "colorNegative",
     "colorSlide",
-    "blackAndWhite"
+    "blackAndWhite",
+    "blackAndWhiteSlide"
   ],
   "filmFormats": [
     "135",
@@ -21,6 +22,10 @@
     {
       "name": "Fotoimpex",
       "url": "https://www.fotoimpex.com/"
+    },
+    {
+      "name": "Retrocamera",
+        "url": "https://www.retrocamera.be/"
     }
   ],
   "bugFilm": [

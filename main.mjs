@@ -3,10 +3,12 @@ import config from './config.json' assert {type: 'json'};
 import {Fotoimpex} from "./websites/fotoimpex.mjs";
 import Twitter from "twit";
 import {PrismaClient} from "@prisma/client";
+import {Retrocamera} from "./websites/retrocamera.mjs";
 
 const websites = [
     new Marinette(),
     new Fotoimpex(),
+    new Retrocamera(),
 ];
 
 const prisma = new PrismaClient();
@@ -25,6 +27,11 @@ for (const website of websites) {
             url: website.website
         }
     });
+    const shopAsFilms = await prisma.film.findFirst({
+        where: {
+            shopId: shop.id
+        }
+    })
     website.scrapFilms().then(async (films) => {
         for (const film of films) {
             // certaines pellicules sont bugger, pour eviter de tweet a chaque lancement on les ignores
@@ -67,7 +74,7 @@ for (const website of websites) {
                     }
 
                     // verification si le vendeur as deja des pellicules en bd : sécuritée si c'est la premiere execution du sript sur ce site pour eviter le span de tweet
-                    if (!prisma.film.findFirst({where: {shopId: shop.id}})) {
+                    if (shopAsFilms) {
                         // on tweet
                         try {
                             await client.post('/statuses/update', {
