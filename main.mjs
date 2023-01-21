@@ -20,6 +20,8 @@ const client = new Twitter({
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
+const tweet = process.argv[2] ? false : true;
+
 // boucle principal fetch tout les sites en simultané
 for (const website of websites) {
     const shop = await prisma.shop.findFirst({
@@ -74,19 +76,16 @@ for (const website of websites) {
                     }
 
                     // verification si le vendeur as deja des pellicules en bd : sécuritée si c'est la premiere execution du sript sur ce site pour eviter le span de tweet
-                    if (shopAsFilms) {
-                        if (film.isInStock) {
-                            // tweet si la pellicule est en stock
-                            // on tweet
-                            try {
-                                await client.post('/statuses/update', {
-                                    status: `Le film ${film.name} est disponible sur ${shop.name} ! Au prix de ${film.price}€  ${film.url}`
-                                });
-                                console.log("tweet envoyé: " + film.name);
-
-                            } catch (e) {
-                                console.log('erreur lors de l\'envoi du tweet');
-                            }
+                    if (shopAsFilms && tweet && film.isInStock) {
+                        // tweet si la pellicule est en stock
+                        // on tweet
+                        try {
+                            await client.post('/statuses/update', {
+                                status: `Le film ${film.name} est disponible sur ${shop.name} ! Au prix de ${film.price}€  ${film.url}`
+                            });
+                            console.log("tweet envoyé: " + film.name);
+                        } catch (e) {
+                            console.log('erreur lors de l\'envoi du tweet');
                         }
                     }
                 } else if (result.price !== film.price || result.isInStock !== film.isInStock) {
@@ -119,7 +118,7 @@ for (const website of websites) {
                         console.log('erreur lors de la création d\'historique de la pellicule:' + film.name);
                     }
                 }
-                if (result && result.isInStock !== film.isInStock && film.isInStock) {
+                if (result && result.isInStock !== film.isInStock && film.isInStock && tweet) {
                     // si la pellicule est de nouveau en stock : tweet
                     try {
                         await client.post('/statuses/update', {
