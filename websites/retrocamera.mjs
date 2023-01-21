@@ -58,7 +58,7 @@ export class Retrocamera {
                                 film.name = $film.find('.product-title').text().trim();
                                 film.url = $film.find('.product-title a').attr('href');
                                 film.price = $film.find('.price').text().trim().replace(/[^0-9,]/g, '');
-                                film.isInStock = !!$film.find('.add_to_cart:not(.disabled)');
+                                film.isInStock = !!$film.find('.add-to-cart').hasClass('disabled');
                                 film.type = typeName;
                                 film.format = formatName;
                                 films.push(film);

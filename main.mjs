@@ -75,18 +75,20 @@ for (const website of websites) {
 
                     // verification si le vendeur as deja des pellicules en bd : sécuritée si c'est la premiere execution du sript sur ce site pour eviter le span de tweet
                     if (shopAsFilms) {
-                        // on tweet
-                        try {
-                            await client.post('/statuses/update', {
-                                status: `Le film ${film.name} est disponible sur ${shop.name} ! Au prix de ${film.price}€  ${film.url}`
-                            });
-                            console.log("tweet envoyé: " + film.name);
+                        if (film.isInStock) {
+                            // tweet si la pellicule est en stock
+                            // on tweet
+                            try {
+                                await client.post('/statuses/update', {
+                                    status: `Le film ${film.name} est disponible sur ${shop.name} ! Au prix de ${film.price}€  ${film.url}`
+                                });
+                                console.log("tweet envoyé: " + film.name);
 
-                        } catch (e) {
-                            console.log('erreur lors de l\'envoi du tweet');
+                            } catch (e) {
+                                console.log('erreur lors de l\'envoi du tweet');
+                            }
                         }
                     }
-
                 } else if (result.price !== film.price || result.isInStock !== film.isInStock) {
                     // si la pellicule existe mais a changer de prix ou de statut de stock (en stock ou pas) : création d'une ligne à son historique
                     console.log("film updated: " + film.name);
