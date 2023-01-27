@@ -4,11 +4,13 @@ import {Fotoimpex} from "./websites/fotoimpex.mjs";
 import Twitter from "twit";
 import {PrismaClient} from "@prisma/client";
 import {Retrocamera} from "./websites/retrocamera.mjs";
+import {NationPhoto} from "./websites/nationphoto.mjs";
 
 const websites = [
     new Marinette(),
     new Fotoimpex(),
     new Retrocamera(),
+    new NationPhoto(),
 ];
 
 const prisma = new PrismaClient();

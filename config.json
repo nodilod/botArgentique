@@ -25,7 +25,11 @@
     },
     {
       "name": "Retrocamera",
-        "url": "https://www.retrocamera.be/"
+      "url": "https://www.retrocamera.be/"
+    },
+    {
+      "name": "Nation Photo",
+      "url": "https://www.nationphoto.com/"
     }
   ],
   "bugFilm": [
