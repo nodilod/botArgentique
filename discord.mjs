@@ -95,7 +95,7 @@ async function find(bot, msg) {
         await bot.createMessage(msg.channel.id, `${foundFilms.length} film(s) trouvé(s) pour la recherche: ${filmName}`);
 
         //si trop de films trouvés, ne pas envoyer le message
-        if (foundFilms.length > 25) {
+        if (foundFilms.length > 35) {
             await bot.createMessage(msg.channel.id, `Trop de films trouvés, veuillez préciser votre recherche`);
         } else {
             let message = '';
