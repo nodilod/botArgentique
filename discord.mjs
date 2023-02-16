@@ -44,10 +44,14 @@ bot.on('messageCreate', async (msg) => {
             history(bot, msg);
         }
 
+        if (msg.content.startsWith('!site')) {
+            sites(bot, msg);
+        }
+
     }
 
     // Si le message est "!random", envoyer un film en stock au hasard
-    if (msg.content.startsWith('!random')) {
+    if (msg.content.startsWith('!sites')) {
         random(bot, msg);
     }
 });
@@ -55,7 +59,7 @@ bot.on('messageCreate', async (msg) => {
 bot.connect();
 
 async function help(bit, msg) {
-    await bot.createMessage(msg.channel.id, 'Commandes disponibles: \n\t!hello,\n\t!scan,\n\t!random <spoiler ?>,\n\t!find <nom du film>,\n\t!history <id du film>');
+    await bot.createMessage(msg.channel.id, 'Commandes disponibles: \n\t!hello,\n\t!scan,\n\t!random <spoiler ?>,\n\t!find <nom du film>,\n\t!history <id du film>,\n\t!site');
 }
 
 async function scan(bot, msg) {
@@ -74,9 +78,6 @@ async function find(bot, msg) {
     const prisma = new PrismaClient();
     // récupérer tous les films en stock avec le nom du shop
     const films = await prisma.film.findMany({
-        where: {
-            isInStock: true
-        },
         include: {
             shop: true
         }
@@ -95,10 +96,9 @@ async function find(bot, msg) {
         await bot.createMessage(msg.channel.id, `${foundFilms.length} film(s) trouvé(s) pour la recherche: ${filmName}`);
 
         //si trop de films trouvés, ne pas envoyer le message
-        if (foundFilms.length > 35) {
+        if (foundFilms.length > 40) {
             await bot.createMessage(msg.channel.id, `Trop de films trouvés, veuillez préciser votre recherche`);
         } else {
-            let message = '';
             foundFilms.forEach(film => {
                 bot.createMessage(
                     msg.channel.id,
@@ -166,4 +166,8 @@ async function history(bot , msg) {
             }
         }
     }
+}
+
+async function sites(bot, msg) {
+    await bot.createMessage(msg.channel.id, 'je scan les sites : \n \t-nationPhoto\n \t-marinette \n \t -fotoimpex \n \t -retrocamra \n \t');
 }
