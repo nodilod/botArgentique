@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ace228e5-8c97-450f-9c03-ff8bfaba39df" name="Changes" comment="add nationPhoto">
+      <change afterPath="$PROJECT_DIR$/discord.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/start.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/main.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="860edeea-b17b-415b-9393-a34ecbe12cd2" />
+        <option name="url" value="https://github.com/nodilod/botArgentique.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Ip9uJHSoOdLDqZjYuYZKSlkKhe" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "18.12.1",
+    "javascript.nodejs.core.library.typings.version": "18.11.18",
+    "last_opened_file_path": "/home/nodilod/Documents/projets/botArgentique/websites",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "/home/nodilod/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/223.8617.44/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/websites" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="fix prices">
+      <created>1670795038186</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670795038186</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add intant film and fix the url from fotoimpex">
+      <created>1670796805759</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670796805759</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ace228e5-8c97-450f-9c03-ff8bfaba39df" name="Changes" comment="add intant film and fix the url from fotoimpex" />
+      <created>1670867878988</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1670867878988</updated>
+      <workItem from="1670867881908" duration="694000" />
+      <workItem from="1671039362331" duration="5585000" />
+      <workItem from="1671126497772" duration="1233000" />
+      <workItem from="1671299580391" duration="1350000" />
+      <workItem from="1671469310174" duration="14763000" />
+      <workItem from="1671556056930" duration="3586000" />
+      <workItem from="1671574234131" duration="1899000" />
+      <workItem from="1671818452654" duration="599000" />
+      <workItem from="1671825052918" duration="2000" />
+      <workItem from="1672174441961" duration="289000" />
+      <workItem from="1672258101138" duration="204000" />
+      <workItem from="1673437268112" duration="43000" />
+      <workItem from="1673729202030" duration="5610000" />
+      <workItem from="1674237450091" duration="72000" />
+      <workItem from="1674336825183" duration="5913000" />
+      <workItem from="1674859284285" duration="1740000" />
+      <workItem from="1675085766116" duration="782000" />
+      <workItem from="1675166060671" duration="2909000" />
+      <workItem from="1676490095063" duration="11069000" />
+    </task>
+    <task id="LOCAL-00003" summary="price on tweet">
+      <created>1671040834651</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1671040834651</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix marinette tweet bug">
+      <created>1671470268437</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1671470268437</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add execution record">
+      <created>1671490273058</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1671490273058</updated>
+    </task>
+    <task id="LOCAL-00006" summary="comment">
+      <created>1673729334761</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1673729334761</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add scrap retrocamera.be">
+      <created>1673734275324</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1673734275324</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fix console.log">
+      <created>1673734538605</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1673734538605</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fix retrocamera isInStock detection">
+      <created>1674338347241</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674338347241</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix retrocamera isInStock detection 2">
+      <created>1674341742277</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1674341742277</updated>
+    </task>
+    <task id="LOCAL-00011" summary="add nationPhoto">
+      <created>1674860833631</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1674860833631</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix prices" />
+    <MESSAGE value="add intant film and fix the url from fotoimpex" />
+    <MESSAGE value="price on tweet" />
+    <MESSAGE value="fix marinette tweet bug" />
+    <MESSAGE value="add execution record" />
+    <MESSAGE value="comment" />
+    <MESSAGE value="add scrap retrocamera.be" />
+    <MESSAGE value="fix console.log" />
+    <MESSAGE value="fix retrocamera isInStock detection" />
+    <MESSAGE value="fix retrocamera isInStock detection 2" />
+    <MESSAGE value="add nationphoto" />
+    <MESSAGE value="add nationPhoto" />
+    <option name="LAST_COMMIT_MESSAGE" value="add nationPhoto" />
+  </component>
+</project>

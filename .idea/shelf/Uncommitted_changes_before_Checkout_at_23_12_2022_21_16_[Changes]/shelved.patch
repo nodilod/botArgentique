@@ -1,0 +1,95 @@
+Index: main.mjs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {Marinette} from \"./websites/marinette.mjs\";\nimport config from './config.json' assert {type: 'json'};\nimport {Fotoimpex} from \"./websites/fotoimpex.mjs\";\nimport Twitter from \"twit\";\nimport {PrismaClient} from \"@prisma/client\";\n\nconst websites = [\n    new Marinette(),\n    new Fotoimpex(),\n];\n\nconst prisma = new PrismaClient();\n\nconst client = new Twitter({\n    consumer_key: process.env.TWITTER_API_KEY,\n    consumer_secret: process.env.TWITTER_API_SECRET_KEY,\n    access_token: process.env.TWITTER_ACCESS_TOKEN,\n    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,\n});\n\nfor (const website of websites) {\n    const shop = await prisma.shop.findFirst({\n        where: {\n            url: website.website\n        }\n    });\n    website.scrapFilms().then(async (films) => {\n        for (const film of films) {\n            if (!config.bugFilm.includes(film.url)) {\n                const result = await prisma.film.findFirst({\n                    where: {\n                        url: film.url\n                    }\n                })\n                if (!result) {\n                    // if film is not in database\n                    const filmType = film.type ? await prisma.filmType.findFirst({where: {name: film.type}}) : {id: null};\n                    const filmFormat = film.format ? await prisma.filmFormat.findFirst({where: {name: film.format}}) : {id: null};\n                    try {\n                        const createdFilm = await prisma.film.create({\n                            data: {\n                                name: film.name,\n                                url: film.url,\n                                price: film.price,\n                                isInStock: film.isInStock,\n                                shopId: shop.id,\n                                filmTypeId: filmType.id,\n                                filmFormatId: filmFormat.id,\n                            }\n                        });\n                        console.log(\"pellicule créée: \" + film.name);\n\n                        await prisma.FilmHistoryRecord.create({\n                            data: {\n                                price: film.price,\n                                isInStock: film.isInStock,\n                                filmId: createdFilm.id\n                            }\n                        })\n                        console.log(\"historique de la pellicule créée: \" + film.name);\n                    } catch (e) {\n                        console.log('impossible de créer la pellicule: ' + film.name);\n                    }\n                    try {\n                        await client.post('/statuses/update', {\n                            status: `Le film ${film.name} est disponible sur ${shop.name} ! Au prix de ${film.price}€  ${film.url}`\n                        });\n                        console.log(\"tweet envoyé: \" + film.name);\n\n                    } catch (e) {\n                        console.log('erreur lors de l\\'envoi du tweet');\n                    }\n                } else if (result.price !== film.price || result.isInStock !== film.isInStock) {\n                    // if film is in database but price or stock is different\n                    console.log(\"film updated: \" + film.name);\n                    try {\n                        await prisma.film.update({\n                            where: {\n                                id: result.id\n                            }, data: {\n                                price: film.price, isInStock: film.isInStock\n                            }\n                        })\n                        console.log(\"pellicule modifiée: \" + film.name);\n                    } catch (e) {\n                        console.log('impossible créé la pellicule: ' + film.name);\n                    }\n\n                    try {\n                        await prisma.FilmHistoryRecord.create({\n                            data: {\n                                price: film.price, isInStock: film.isInStock, filmId: result.id\n                            }\n                        })\n                        console.log(\"historique de la pellicule créée: \" + film.name);\n\n                    } catch (e) {\n                        console.log('erreur lors de la création d\\'historique de la pellicule:' + film.name);\n                    }\n                }\n                if (result && result.isInStock !== film.isInStock && film.isInStock) {\n                    //if film is back in stock, send a tweet\n                    try {\n                        await client.post('/statuses/update', {\n                            status: `Le film ${film.name} est de nouveau disponible sur ${website.website} ! Au prix de ${film.price}€  ${film.url}`\n                        });\n                        console.log(\"tweet envoyé: \" + film.name);\n                    } catch (e) {\n                        console.log('impossible de twitter le retour du film: ' + film.name);\n                    }\n                }\n            }\n        }\n    });\n}\n\nprisma.Execution.create({\n    data: {}\n}).then(() => {\n  console.log(\"execution créée\");\n})
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.mjs b/main.mjs
+--- a/main.mjs	(revision 1faef4280fb531834c9478f7d3994cafc98d142a)
++++ b/main.mjs	(date 1671826609695)
+@@ -18,6 +18,7 @@
+     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+ });
+ 
++// boucle principal fetch tout les sites en simultané
+ for (const website of websites) {
+     const shop = await prisma.shop.findFirst({
+         where: {
+@@ -26,6 +27,8 @@
+     });
+     website.scrapFilms().then(async (films) => {
+         for (const film of films) {
++
++            // certaines pellicules sont bugger, pour eviter de tweet a chaque lancement on les ignores
+             if (!config.bugFilm.includes(film.url)) {
+                 const result = await prisma.film.findFirst({
+                     where: {
+@@ -33,10 +36,14 @@
+                     }
+                 })
+                 if (!result) {
+-                    // if film is not in database
++                    // si la pellicule n'est pas en bd : création et tweet
+                     const filmType = film.type ? await prisma.filmType.findFirst({where: {name: film.type}}) : {id: null};
+                     const filmFormat = film.format ? await prisma.filmFormat.findFirst({where: {name: film.format}}) : {id: null};
++
++                    // verification si le vendeur as deja des pellicules en bd : sécuritée si c'est la premiere execution du sript sur ce site pour eviter le span de tweet
++
+                     try {
++                        //creation de la pellicule
+                         const createdFilm = await prisma.film.create({
+                             data: {
+                                 name: film.name,
+@@ -50,6 +57,7 @@
+                         });
+                         console.log("pellicule créée: " + film.name);
+ 
++                        // création de son historique
+                         await prisma.FilmHistoryRecord.create({
+                             data: {
+                                 price: film.price,
+@@ -61,6 +69,7 @@
+                     } catch (e) {
+                         console.log('impossible de créer la pellicule: ' + film.name);
+                     }
++                    // on tweet
+                     try {
+                         await client.post('/statuses/update', {
+                             status: `Le film ${film.name} est disponible sur ${shop.name} ! Au prix de ${film.price}€  ${film.url}`
+@@ -71,8 +80,9 @@
+                         console.log('erreur lors de l\'envoi du tweet');
+                     }
+                 } else if (result.price !== film.price || result.isInStock !== film.isInStock) {
+-                    // if film is in database but price or stock is different
++                    // si la pellicule existe mais a changer de prix ou de statut de stock (en stock ou pas) : création d'une ligne à son historique
+                     console.log("film updated: " + film.name);
++                    // modificationd es information de la pellicule
+                     try {
+                         await prisma.film.update({
+                             where: {
+@@ -86,6 +96,7 @@
+                         console.log('impossible créé la pellicule: ' + film.name);
+                     }
+ 
++                    // création d'une ligne d'historique
+                     try {
+                         await prisma.FilmHistoryRecord.create({
+                             data: {
+@@ -99,7 +110,7 @@
+                     }
+                 }
+                 if (result && result.isInStock !== film.isInStock && film.isInStock) {
+-                    //if film is back in stock, send a tweet
++                    // si la pellicule est de nouveau en stock : tweet
+                     try {
+                         await client.post('/statuses/update', {
+                             status: `Le film ${film.name} est de nouveau disponible sur ${website.website} ! Au prix de ${film.price}€  ${film.url}`
+@@ -114,6 +125,7 @@
+     });
+ }
+ 
++// création d'une ligne d'historique c'execution pour garder un historique
+ prisma.Execution.create({
+     data: {}
+ }).then(() => {
