@@ -1,5 +1,6 @@
 import Eris from 'eris';
 import {main} from "./main.mjs";
+import {PrismaClient} from "@prisma/client";
 
 let token;
 token = process.env.DISCORD_TOKEN;
@@ -27,6 +28,10 @@ bot.on('messageCreate', async (msg) => {
             await bot.createMessage(msg.channel.id, 'Hello World!');
         }
 
+        if (msg.content.startsWith('!help')) {
+            await bot.createMessage(msg.channel.id, 'Commandes disponibles: !hello, !scan');
+        }
+
         if (msg.content.startsWith('!scan')) {
             await bot.createMessage(msg.channel.id, 'Scanning...');
             const messages = await main(tweet)
@@ -39,6 +44,21 @@ bot.on('messageCreate', async (msg) => {
             }
         }
     }
+
+    // Si le message est "!random", envoyer un film en stock au hasard
+    if (msg.content === '!random') {
+        const prisma = new PrismaClient();
+        const films = await prisma.film.findMany({
+            where: {
+                isInStock: true
+            }
+        });
+        await prisma.$disconnect();
+
+        const film = films[Math.floor(Math.random() * films.length)];
+        await bot.createMessage(msg.channel.id, `Film en stock au hasard: ${film.name} - ${film.url}`);
+    }
+
 });
 
 bot.connect();
