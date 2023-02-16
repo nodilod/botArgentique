@@ -47,7 +47,7 @@ bot.on('messageCreate', async (msg) => {
     }
 
     // Si le message est "!random", envoyer un film en stock au hasard
-    if (msg.content === '!random') {
+    if (msg.content.startsWith('!random')) {
         random(bot, msg);
     }
 });
@@ -55,7 +55,7 @@ bot.on('messageCreate', async (msg) => {
 bot.connect();
 
 async function help(bit, msg) {
-    await bot.createMessage(msg.channel.id, 'Commandes disponibles: \n\t!hello,\n\t!scan,\n\t!random,\n\t!find <nom du film>');
+    await bot.createMessage(msg.channel.id, 'Commandes disponibles: \n\t!hello,\n\t!scan,\n\t!random <spoiler ?>,\n\t!find <nom du film>,\n\t!history <id du film>');
 }
 
 async function scan(bot, msg) {
@@ -118,7 +118,13 @@ async function random(bot, msg) {
     await prisma.$disconnect();
 
     const film = films[Math.floor(Math.random() * films.length)];
-    await bot.createMessage(msg.channel.id, `Film en stock au hasard: ${film.name} - ${film.url}`);
+
+
+    console.log(msg.content.includes('spoiler'));
+    await bot.createMessage(msg.channel.id,
+        msg.content.includes('spoiler')
+            ? `Film en stock au hasard: ||${film.name} - ${film.url}||`
+            : `Film en stock au hasard: ${film.name} - ${film.url}`);
 }
 
 async function history(bot , msg) {
