@@ -1,6 +1,7 @@
 import Eris from 'eris';
 import {main} from "./main.mjs";
 import {PrismaClient} from "@prisma/client";
+import Fuse from "fuse.js";
 
 let token;
 token = process.env.DISCORD_TOKEN;
@@ -44,7 +45,7 @@ bot.on('messageCreate', async (msg) => {
             history(bot, msg);
         }
 
-        if (msg.content.startsWith('!site')) {
+        if (msg.content.startsWith('!sites')) {
             sites(bot, msg);
         }
 
@@ -59,7 +60,7 @@ bot.on('messageCreate', async (msg) => {
 bot.connect();
 
 async function help(bit, msg) {
-    await bot.createMessage(msg.channel.id, 'Commandes disponibles: \n\t!hello,\n\t!scan,\n\t!random <spoiler ?>,\n\t!find <nom du film>,\n\t!history <id du film>,\n\t!site');
+    await bot.createMessage(msg.channel.id, 'Commandes disponibles: \n\t!hello,\n\t!scan,\n\t!random <spoiler ?>,\n\t!find <nom du film>,\n\t!history <id du film>,\n\t!sites');
 }
 
 async function scan(bot, msg) {
@@ -86,8 +87,13 @@ async function find(bot, msg) {
 
     const filmName = msg.content.replace('!find ', '');
     // convert to lower case and remove accents
-    const filmNameLower = filmName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-    const foundFilms = films.filter(film =>  (film.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()).includes(filmName));
+
+    const searchOption = {
+        keys: ['name'],
+        includeScore: true,
+    }
+    const fuse = new Fuse(films, searchOption);
+    const foundFilms = fuse.search(filmName);
 
     if (foundFilms.length === 0) {
         await bot.createMessage(msg.channel.id, `Aucun film ne correspond à la recherche: ${filmName}`);
@@ -96,15 +102,16 @@ async function find(bot, msg) {
         await bot.createMessage(msg.channel.id, `${foundFilms.length} film(s) trouvé(s) pour la recherche: ${filmName}`);
 
         //si trop de films trouvés, ne pas envoyer le message
-        if (foundFilms.length > 40) {
-            await bot.createMessage(msg.channel.id, `Trop de films trouvés, veuillez préciser votre recherche`);
-        } else {
-            foundFilms.forEach(film => {
-                bot.createMessage(
-                    msg.channel.id,
-                    `\n id : ${film.id} -> ${film.name} ${film.price}€ ${film.shop.name} - ${film.isInStock ? 'en stock' : 'indisponible'}\n`);
-            });
+        if (foundFilms.length > 30) {
+            await bot.createMessage(msg.channel.id, `/!\\ Trop de films trouvés, veuillez préciser votre recherche \n voici les 30 premiers films trouvés:`);
         }
+        foundFilms.sort((a, b) => a.score - b.score).slice(0, 30);
+        foundFilms.forEach(result => {
+            const film = result.item;
+            bot.createMessage(
+                msg.channel.id,
+                `\n id : ${film.id} -> ${film.name} ${film.price}€ ${film.shop.name} - ${film.isInStock ? 'en stock' : 'indisponible'}\n`);
+        });
     }
 }
 
