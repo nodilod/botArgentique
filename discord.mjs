@@ -52,9 +52,14 @@ bot.on('messageCreate', async (msg) => {
     }
 
     // Si le message est "!random", envoyer un film en stock au hasard
-    if (msg.content.startsWith('!sites')) {
+    if (msg.content.startsWith('!random')) {
         random(bot, msg);
     }
+
+    if (msg.content.startsWith('!emergencyStop')) {
+        emergencyStop(bot, msg);
+    }
+
 });
 
 bot.connect();
@@ -178,4 +183,9 @@ async function history(bot , msg) {
 
 async function sites(bot, msg) {
     await bot.createMessage(msg.channel.id, 'je scan les sites : \n \t-nationPhoto\n \t-marinette \n \t -fotoimpex \n \t -retrocamra \n \t');
+}
+
+async function emergencyStop(bot,msg) {
+    await bot.createMessage(msg.channel.id, 'Arrêt du bot');
+    process.exit(0);
 }

@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ace228e5-8c97-450f-9c03-ff8bfaba39df" name="Changes" comment="add nationPhoto">
-      <change afterPath="$PROJECT_DIR$/discord.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/start.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/main.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="ace228e5-8c97-450f-9c03-ff8bfaba39df" name="Changes" comment="emergency stop" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,22 +46,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "javascript.nodejs.core.library.configured.version": "18.12.1",
-    "javascript.nodejs.core.library.typings.version": "18.11.18",
-    "last_opened_file_path": "/home/nodilod/Documents/projets/botArgentique/websites",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/home/nodilod/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/223.8617.44/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.12.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.11.18&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nodilod/Documents/projets/botArgentique/websites&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/nodilod/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/223.8617.44/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/websites" />
@@ -114,6 +108,7 @@
       <workItem from="1675085766116" duration="782000" />
       <workItem from="1675166060671" duration="2909000" />
       <workItem from="1676490095063" duration="11069000" />
+      <workItem from="1676652897062" duration="312000" />
     </task>
     <task id="LOCAL-00003" summary="price on tweet">
       <created>1671040834651</created>
@@ -178,7 +173,28 @@
       <option name="project" value="LOCAL" />
       <updated>1674860833631</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add nationPhoto">
+      <created>1676652949268</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1676652949268</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix">
+      <created>1676652982694</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1676652982695</updated>
+    </task>
+    <task id="LOCAL-00014" summary="emergency stop">
+      <created>1676653141903</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1676653141903</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +224,8 @@
     <MESSAGE value="fix retrocamera isInStock detection 2" />
     <MESSAGE value="add nationphoto" />
     <MESSAGE value="add nationPhoto" />
-    <option name="LAST_COMMIT_MESSAGE" value="add nationPhoto" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="emergency stop" />
+    <option name="LAST_COMMIT_MESSAGE" value="emergency stop" />
   </component>
 </project>
