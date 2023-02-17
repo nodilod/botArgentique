@@ -93,7 +93,7 @@ async function find(bot, msg) {
         includeScore: true,
     }
     const fuse = new Fuse(films, searchOption);
-    const foundFilms = fuse.search(filmName);
+    let foundFilms = fuse.search(filmName);
 
     if (foundFilms.length === 0) {
         await bot.createMessage(msg.channel.id, `Aucun film ne correspond à la recherche: ${filmName}`);
@@ -104,7 +104,7 @@ async function find(bot, msg) {
         //si trop de films trouvés, ne pas envoyer le message
         if (foundFilms.length > 30) {
             await bot.createMessage(msg.channel.id, `/!\\ Trop de films trouvés, veuillez préciser votre recherche \n voici les 30 premiers films trouvés:`);
-            foundFilm = foundFilms.slice(0, 30);
+            foundFilms = foundFilms.slice(0, 30);
         }
         foundFilms.sort((a, b) => a.score - b.score).slice(0, 30);
         foundFilms.forEach(result => {
