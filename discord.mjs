@@ -175,7 +175,7 @@ async function history(bot , msg) {
                 await bot.createMessage(msg.channel.id, `Historique pour le film: ${films.name}`);
                 bot.createMessage(msg.channel.id, `en stock: O|N \t prix: \t date: \n\n`);
                 history.forEach(h => {
-                    bot.createMessage(msg.channel.id, `${h.isInStock ? 'O' : 'N'}\t${h.price}\t\t${ h.createdAt.getDate()}/${h.createdAt.getMonth()}/${h.createdAt.getFullYear()}`);
+                    bot.createMessage(msg.channel.id, `${h.isInStock ? 'O' : 'N'}\t${h.price}\t\t${ h.createdAt.toLocaleString()}`);
                 });
             }
         }
