@@ -187,7 +187,7 @@ async function sites(bot, msg) {
     config.shops.forEach( shop => {
         message += `\n \t-${shop.name}`;
     });
-    await bot.createMessage(message);
+    await bot.createMessage(msg.channel.id, message);
 }
 
 async function emergencyStop(bot,msg) {
