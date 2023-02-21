@@ -2,6 +2,7 @@ import Eris from 'eris';
 import {main} from "./main.mjs";
 import {PrismaClient} from "@prisma/client";
 import Fuse from "fuse.js";
+import config from './config.json' assert {type: 'json'};
 
 let token;
 token = process.env.DISCORD_TOKEN;
@@ -59,7 +60,6 @@ bot.on('messageCreate', async (msg) => {
     if (msg.content.startsWith('!emergencyStop')) {
         emergencyStop(bot, msg);
     }
-
 });
 
 bot.connect();
@@ -96,6 +96,7 @@ async function find(bot, msg) {
     const searchOption = {
         keys: ['name'],
         includeScore: true,
+        threshold: 0.3,
     }
     const fuse = new Fuse(films, searchOption);
     let foundFilms = fuse.search(filmName);
@@ -107,9 +108,9 @@ async function find(bot, msg) {
         await bot.createMessage(msg.channel.id, `${foundFilms.length} film(s) trouvé(s) pour la recherche: ${filmName}`);
 
         //si trop de films trouvés, ne pas envoyer le message
-        if (foundFilms.length > 30) {
+        if (foundFilms.length > 20) {
             await bot.createMessage(msg.channel.id, `/!\\ Trop de films trouvés, veuillez préciser votre recherche \n voici les 30 premiers films trouvés:`);
-            foundFilms = foundFilms.slice(0, 30);
+            foundFilms = foundFilms.slice(0, 20);
         }
         foundFilms.sort((a, b) => a.score - b.score).slice(0, 30);
         foundFilms.forEach(result => {
@@ -182,6 +183,10 @@ async function history(bot , msg) {
 }
 
 async function sites(bot, msg) {
+    let message = 'je scan les sites :'
+    config.shops.forEach( shop => {
+        message += `\n \t-${shop.name}`;
+    });
     await bot.createMessage(msg.channel.id, 'je scan les sites : \n \t-nationPhoto\n \t-marinette \n \t -fotoimpex \n \t -retrocamra \n \t');
 }
 

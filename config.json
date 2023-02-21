@@ -30,6 +30,10 @@
     {
       "name": "Nation Photo",
       "url": "https://www.nationphoto.com/"
+    },
+    {
+      "name" : "Mori film lab",
+      "url" : "https://fr.morifilmlab.com/"
     }
   ],
   "bugFilm": [

@@ -5,16 +5,18 @@ import Twitter from "twit";
 import {PrismaClient} from "@prisma/client";
 import {Retrocamera} from "./websites/retrocamera.mjs";
 import {NationPhoto} from "./websites/nationphoto.mjs";
+import {Mori} from "./websites/mori.mjs";
 
 export async function main(tweet) {
 
     const messages = [];
 
     const websites = [
-        new Marinette(),
-        new Fotoimpex(),
-        new Retrocamera(),
-        new NationPhoto(),
+        // new Marinette(),
+        // new Fotoimpex(),
+        // new Retrocamera(),
+        // new NationPhoto(),
+        new Mori()
     ];
 
     const prisma = new PrismaClient();
