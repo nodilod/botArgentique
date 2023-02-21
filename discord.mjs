@@ -187,7 +187,7 @@ async function sites(bot, msg) {
     config.shops.forEach( shop => {
         message += `\n \t-${shop.name}`;
     });
-    await bot.createMessage(msg.channel.id, 'je scan les sites : \n \t-nationPhoto\n \t-marinette \n \t -fotoimpex \n \t -retrocamra \n \t');
+    await bot.createMessage(message);
 }
 
 async function emergencyStop(bot,msg) {
