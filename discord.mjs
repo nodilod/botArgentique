@@ -3,6 +3,7 @@ import {main} from "./main.mjs";
 import {PrismaClient} from "@prisma/client";
 import Fuse from "fuse.js";
 import config from './config.json' assert {type: 'json'};
+import {buildHistoryChart} from "./chart.mjs";
 
 let token;
 token = process.env.DISCORD_TOKEN;
@@ -48,6 +49,10 @@ bot.on('messageCreate', async (msg) => {
 
         if (msg.content.startsWith('!sites')) {
             sites(bot, msg);
+        }
+
+        if (msg.content.startsWith('!chart')) {
+            chart(bot, msg);
         }
 
     }
@@ -193,4 +198,22 @@ async function sites(bot, msg) {
 async function emergencyStop(bot,msg) {
     await bot.createMessage(msg.channel.id, 'Arrêt du bot');
     process.exit(0);
+}
+
+async function chart(bot, msg) {
+    // !chart 10, 20, 30
+    // !chart <id du film>, <id du film>, <id du film>
+    const filmIds = msg.content.replace('!chart ', '').split(',').map(id => parseInt(id));
+    if (filmIds.some(isNaN)) {
+        await bot.createMessage(msg.channel.id, `Veuillez entrer des id valides`);
+    } else {
+        // make a image.png with the chart
+        const chart = await buildHistoryChart(filmIds);
+        const chartBuffer = await Buffer.from(chart, 'base64');
+        // send the image
+        await bot.createMessage(msg.channel.id, 'Historique des films', {
+                name: 'chart.png',
+                file: chartBuffer
+        });
+    }
 }

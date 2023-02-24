@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ace228e5-8c97-450f-9c03-ff8bfaba39df" name="Changes" comment="emergency stop" />
+    <list default="true" id="ace228e5-8c97-450f-9c03-ff8bfaba39df" name="Changes" comment="emergency stop">
+      <change afterPath="$PROJECT_DIR$/chart.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/discord.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -109,6 +115,8 @@
       <workItem from="1675166060671" duration="2909000" />
       <workItem from="1676490095063" duration="11069000" />
       <workItem from="1676652897062" duration="312000" />
+      <workItem from="1677272578056" duration="1507000" />
+      <workItem from="1677274101871" duration="8710000" />
     </task>
     <task id="LOCAL-00003" summary="price on tweet">
       <created>1671040834651</created>
