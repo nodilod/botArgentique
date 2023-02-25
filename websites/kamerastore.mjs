@@ -54,7 +54,7 @@ export class KameraStore {
                     page++;
                 }
             }
-            console.log(films);
+            resolve(films);
         });
     }
 }
