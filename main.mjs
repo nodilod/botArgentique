@@ -36,8 +36,7 @@ export async function main(tweet) {
             date: 'desc'
         }
     });
-    // if (lastScan && lastScan.date > new Date(new Date().getTime() - 60 * 60 * 1000)) {
-    if (0) {
+    if (lastScan && lastScan.date > new Date(new Date().getTime() - 60 * 60 * 1000)) {
         messages.push("Le dernier scan a été fait il y a moins d'une heure !");
         return messages;
     } else {
