@@ -22,7 +22,7 @@ export class KameraStore {
             const kameraStore = new KameraStore();
 
             for (const valueFormat of Object.entries(kameraStore.paramsFilmFormat)) {
-                console.log("recuperation du format " + valueFormat[0]);
+                //console.log("recuperation du format " + valueFormat[0]);
                 const formatName = valueFormat[0];
                 const formatValue = valueFormat[1];
 
@@ -48,8 +48,6 @@ export class KameraStore {
                                 isInStock: $film.find('.badge--bottom-left').text().trim() !== 'Épuisé',
                                 price: $film.find('.price__regular .price-item').text().trim().replace(/[^0-9,]/g, ''),
                             };
-
-                            console.log(film);
                             films.push(film);
                         });
                     }
@@ -57,7 +55,6 @@ export class KameraStore {
                 }
             }
             console.log(films);
-            resolve(films);
         });
     }
 }
