@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ace228e5-8c97-450f-9c03-ff8bfaba39df" name="Changes" comment="emergency stop">
-      <change afterPath="$PROJECT_DIR$/chart.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/discord.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/discord.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    <list default="true" id="ace228e5-8c97-450f-9c03-ff8bfaba39df" name="Changes" comment="fix">
+      <change beforePath="$PROJECT_DIR$/chart.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/chart.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +112,7 @@
       <workItem from="1676490095063" duration="11069000" />
       <workItem from="1676652897062" duration="312000" />
       <workItem from="1677272578056" duration="1507000" />
-      <workItem from="1677274101871" duration="8710000" />
+      <workItem from="1677274101871" duration="9228000" />
     </task>
     <task id="LOCAL-00003" summary="price on tweet">
       <created>1671040834651</created>
@@ -202,7 +198,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676653141903</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="CHART !!">
+      <created>1677282954974</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1677282954974</updated>
+    </task>
+    <task id="LOCAL-00016" summary="fix">
+      <created>1677283330763</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1677283330763</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,8 +242,9 @@
     <MESSAGE value="fix retrocamera isInStock detection 2" />
     <MESSAGE value="add nationphoto" />
     <MESSAGE value="add nationPhoto" />
-    <MESSAGE value="fix" />
     <MESSAGE value="emergency stop" />
-    <option name="LAST_COMMIT_MESSAGE" value="emergency stop" />
+    <MESSAGE value="CHART !!" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
 </project>

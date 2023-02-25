@@ -6,6 +6,7 @@ import {PrismaClient} from "@prisma/client";
 import {Retrocamera} from "./websites/retrocamera.mjs";
 import {NationPhoto} from "./websites/nationphoto.mjs";
 import {Mori} from "./websites/mori.mjs";
+import {KameraStore} from "./websites/kamerastore.mjs";
 
 export async function main(tweet) {
 
@@ -16,7 +17,8 @@ export async function main(tweet) {
         new Fotoimpex(),
         new Retrocamera(),
         new NationPhoto(),
-        new Mori()
+        new Mori(),
+        new KameraStore(),
     ];
 
     const prisma = new PrismaClient();
@@ -34,7 +36,8 @@ export async function main(tweet) {
             date: 'desc'
         }
     });
-    if (lastScan && lastScan.date > new Date(new Date().getTime() - 60 * 60 * 1000)) {
+    // if (lastScan && lastScan.date > new Date(new Date().getTime() - 60 * 60 * 1000)) {
+    if (0) {
         messages.push("Le dernier scan a été fait il y a moins d'une heure !");
         return messages;
     } else {
@@ -116,7 +119,8 @@ export async function main(tweet) {
                                     where: {
                                         id: result.id
                                     }, data: {
-                                        price: film.price, isInStock: film.isInStock
+                                        price: film.price,
+                                        isInStock: film.isInStock
                                     }
                                 })
                                 console.log("pellicule modifiée: " + film.name);

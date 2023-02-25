@@ -37,7 +37,7 @@ export async function buildHistoryChart(filmsId = []) {
             data: [] // tableau des données (x: date, y: prix)
         };
         for (const record of film.history) {
-            const createdAt = record.createdAt.toLocaleString();
+            const createdAt = record.createdAt;
             console.log(createdAt);
             console.log(record.filmId);
             const dateIndex = chartData.labels.indexOf(createdAt);
@@ -57,7 +57,7 @@ export async function buildHistoryChart(filmsId = []) {
             }
         }
         // continue la ligne jusqu'au bout
-        const now = new Date().toLocaleString();
+        const now = new Date();
         const dateIndex = chartData.labels.indexOf(now);
         if (dateIndex === -1) {
             chartData.labels.push(now);
@@ -76,8 +76,10 @@ export async function buildHistoryChart(filmsId = []) {
         chartData.datasets.push(dataset);
     }
 
-    // Trier les données ordre alphabétique
-    chartData.labels.sort((a, b) => a.localeCompare(b));
+    // conpare date
+    chartData.labels.sort((a, b) =>  new Date(a) - new Date(b));
+    //convert date to string
+    chartData.labels = chartData.labels.map(date => date.toLocaleString());
 
 // Générer le graphique
     chartData.labels.sort((a, b) => new Date(a) - new Date(b));
