@@ -46,14 +46,14 @@ export async function buildHistoryChart(filmsId = []) {
                 chartData.labels.push(createdAt);
                 dataset.data.push({ x: createdAt, y: parseInt(record.price) });
                 // make line red if isInStock is false (out of stock) and green if true (in stock)
-                dataset.pointBackgroundColor.push(getPointColor(film.isInStock));
-                dataset.pointBorderColor.push(getPointColor(film.isInStock));
+                dataset.pointBackgroundColor.push(getPointColor(record.isInStock));
+                dataset.pointBorderColor.push(getPointColor(record.isInStock));
 
             } else {
                 dataset.data[dateIndex] = { x: createdAt , y: parseInt(record.price)};
                 // make line red if isInStock is false (out of stock) and green if true (in stock)
-                dataset.pointBackgroundColor.push(getPointColor(film.isInStock));
-                dataset.pointBorderColor.push(getPointColor(film.isInStock));
+                dataset.pointBackgroundColor.push(getPointColor(record.isInStock));
+                dataset.pointBorderColor.push(getPointColor(record.isInStock));
             }
         }
         // continue la ligne jusqu'au bout
