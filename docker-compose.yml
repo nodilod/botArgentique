@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  db:
+    image: "mariadb:10.3"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/custom.cnf
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: myusr
+      MYSQL_PASSWORD: myusrpass
+    ports:
+      - "3306:3306"
+    network_mode: host
+       
+volumes:
+  db_data:
