@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ace228e5-8c97-450f-9c03-ff8bfaba39df" name="Changes" comment="fix">
-      <change afterPath="$PROJECT_DIR$/.env.exemple" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    <list default="true" id="ace228e5-8c97-450f-9c03-ff8bfaba39df" name="Changes" comment="add safelight.mjs">
+      <change afterPath="$PROJECT_DIR$/websites/safelight.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/main.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +58,7 @@
     "WebServerToolWindowFactoryState": "false",
     "javascript.nodejs.core.library.configured.version": "18.12.1",
     "javascript.nodejs.core.library.typings.version": "18.11.18",
-    "last_opened_file_path": "/home/nodilod/Documents/cours/jsnodeEtTout/TP1",
+    "last_opened_file_path": "/home/nodilod/Documents/projets/botArgentique/websites",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -69,8 +69,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/websites" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -119,6 +119,7 @@
       <workItem from="1677274101871" duration="9228000" />
       <workItem from="1677482732444" duration="1342000" />
       <workItem from="1677512284056" duration="1867000" />
+      <workItem from="1677528757949" duration="3630000" />
     </task>
     <task id="LOCAL-00003" summary="price on tweet">
       <created>1671040834651</created>
@@ -218,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677283330763</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="read me">
+      <created>1677528787156</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1677528787156</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +259,8 @@
     <MESSAGE value="emergency stop" />
     <MESSAGE value="CHART !!" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="read me" />
+    <MESSAGE value="add safelight.mjs" />
+    <option name="LAST_COMMIT_MESSAGE" value="add safelight.mjs" />
   </component>
 </project>

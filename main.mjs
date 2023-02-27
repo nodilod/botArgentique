@@ -7,6 +7,7 @@ import {Retrocamera} from "./websites/retrocamera.mjs";
 import {NationPhoto} from "./websites/nationphoto.mjs";
 import {Mori} from "./websites/mori.mjs";
 import {KameraStore} from "./websites/kamerastore.mjs";
+import {SafeLight} from "./websites/safelight.mjs";
 
 export async function main(tweet) {
 
@@ -19,6 +20,7 @@ export async function main(tweet) {
         new NationPhoto(),
         new Mori(),
         new KameraStore(),
+        new SafeLight()
     ];
 
     const prisma = new PrismaClient();
